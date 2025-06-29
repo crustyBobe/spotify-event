@@ -1,7 +1,7 @@
 # For authorization to view user accounts. api-connection.py only works for public data
 # This will ask you to open a URL on your browser and accept permission for spotify-event to view data
-# After clicking allow the page won't open, enter the URL of that page into the CLI to get the token
-# That token will be passed to other requests and
+# After clicking agree the page will show not found, enter the URL of that page into the CLI to get the token
+# That token will be passed to other requests and 
 
 import requests
 import os
@@ -10,7 +10,7 @@ import urllib.parse
 CLIENT_ID = os.environ['CLIENT_ID']
 CLIENT_SECRET = os.environ['CLIENT_SECRET']
 REDIRECT_URI = 'https://127.0.0.1:8000/callback'
-SCOPE = 'user-read-private user-read-email playlist-read-private'
+SCOPE = 'user-read-private user-top-read user-follow-read'
 
 params = {
     'client_id': CLIENT_ID,
@@ -52,3 +52,5 @@ refresh_token = tokens.get('refresh_token')
 headers = {
     'Authorization': f'Bearer {access_token}'
 }
+
+print(access_token)
